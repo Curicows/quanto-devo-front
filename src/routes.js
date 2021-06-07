@@ -22,8 +22,16 @@ import Register from "views/examples/Register.js";
 import Login from "views/examples/Login.js";
 import Tables from "views/examples/Tables.js";
 import Icons from "views/examples/Icons.js";
+import {Redirect, Route} from "react-router-dom";
 
 var routes = [
+  {
+    path: "/login",
+    name: "Login",
+    icon: "ni ni-key-25 text-info",
+    component: Login,
+    layout: "/auth",
+  },
   {
     path: "/index",
     name: "Dashboard",
@@ -60,13 +68,6 @@ var routes = [
     layout: "/admin",
   },
   {
-    path: "/login",
-    name: "Login",
-    icon: "ni ni-key-25 text-info",
-    component: Login,
-    layout: "/auth",
-  },
-  {
     path: "/register",
     name: "Register",
     icon: "ni ni-circle-08 text-pink",
@@ -74,4 +75,26 @@ var routes = [
     layout: "/auth",
   },
 ];
+/*
+function PrivateRoute({ children, ...rest }) {
+  let auth = useAuth();
+  return (
+      <Route
+          {...rest}
+          render={({ location }) =>
+              auth.user ? (
+                  children
+              ) : (
+                  <Redirect
+                      to={{
+                        pathname: "/login",
+                        state: { from: location }
+                      }}
+                  />
+              )
+          }
+      />
+  );
+}*/
+
 export default routes;
